@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} {{products.title}} Page {% endblock title %}
+{% block content %}
+<div class = "container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{product.image.url}}" height="500" width="500">
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center text-primary my-6"> {{products.title}} </h1>
+            <p>{{products.description |linebreaks }}</p>
+            <button class="btn btn-success">Savatga qo'shish</button>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

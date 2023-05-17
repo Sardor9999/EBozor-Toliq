@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Add Customer Page {% endblock title %}
+
+{% block content %}
+<div class = "container">
+  <div>
+    <div class = ".col-md-6 offset-3"></div>
+        <h1 class="text-center text-danger my-5"> Add New Customer </h1>
+        <form method = "post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type = "submit" class="btn btn-success" href = "{% url 'index' %}"> Add Customer </button>
+        </form>
+  </div>
+</div>
+
+{% endblock content %}
+

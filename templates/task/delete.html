@@ -1,0 +1,20 @@
+ {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Delete Curent Task {% endblock title %}
+
+{% block content %}
+<div class = "container">
+  <div>
+    <div class = ".col-md-6 offset-3"></div>
+        <h1 class="text-center text-danger my-5"> Delete Current Task </h1>
+        <form method = "post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button type = "submit" class="btn btn-danger">Delete</button>
+            <a href="{% task-list %}" class="btn btn-warning">No, go back</a>
+        </form>
+  </div>
+</div>
+
+{% endblock content %}
+

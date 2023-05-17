@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} Index Page {% endblock title %}
+{% block content %}
+<div class = "contenier my-5 mx-4">
+<div class="alert alert-primary" role="alert">
+<div class = "container">
+  <div>
+    <h1 class="text-center text-primary my-5"> ALL Products List</h1>
+    <div class="row">
+     {% for product in products %}
+      <div class="col-md-4 my-4">
+    <div class="card" style="width: 18rem;">
+      {% if product.image.url %}
+  <img src="{{ product.image.url }}" class="card-img-top" alt="Bu yerda rasm bor">
+      {% endif %}
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ product.title }}</h5>
+      <p class="card-text text-center">Narxi {{product.price}} so'm</p>
+      <div class="d-grid gap-2">
+          <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary"> Batafsil</a>
+
+      </div>
+    </div>
+    </div>
+      </div>
+    {% endfor %}
+    <div>
+        {% include 'pagination.html' with page=products %}
+    </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock content %}
+

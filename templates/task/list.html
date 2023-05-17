@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} TASKS LIST {% endblock title %}
+
+{% block content %}
+<div class = "container">
+  <div>
+    <div class = ".col-md-8 offset-6"></div>
+        <h1 class="text-center text-danger my-5"> TASK lIST </h1>
+            <table class="table table text-center">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Complited</th>
+        <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for task in tasks %}
+          <tr class="{% if task.is_compilted %}table-success{% else %}table-primary{% endif %}">
+            <th scope="row">{{task.id}}</th>
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.priority}}</td>
+            <td>{{task.is_complited}}</td>
+              <td><a href="{% url 'task-update' task.id %}" class="mx-3 btn btn-warning">Update</a> <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">Delete</a> </td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+      <a href="{% url 'task-create' %}" class="btn btn-primary">+ Add Task</a>
+      <div>
+        {% include 'pagination.html' with page=page_obj %}
+      </div>
+  </div>
+</div>
+{% endblock content %}
+
